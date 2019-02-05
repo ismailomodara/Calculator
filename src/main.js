@@ -1,8 +1,9 @@
 import Vue from 'vue'
-import App from './App.vue'
+import Calculator from './calculator.vue'
+import '@/assets/css/style.css'
 
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  render: h => h(Calculator),
+}).$mount('#calculator')
