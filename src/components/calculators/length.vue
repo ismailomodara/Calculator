@@ -1,19 +1,18 @@
 <template>
   <div>
-    The body...
+    <h1>Length Calculator</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Content',
-  componentName: 'Content',
+  name: 'Length',
+  componentName: 'Length',
   data() {
-      return {}
+    return {}
   }
 }
-</script>git
-
+</script>
 
 <style scoped>
 

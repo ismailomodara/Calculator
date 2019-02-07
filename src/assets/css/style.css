@@ -1,7 +1,7 @@
 /* Stylesheet */
 
 html, body {
-  height: 100vh;
+  height: 100%;
   width: 100%;
 }
 
@@ -14,6 +14,29 @@ body {
   text-align: center;
   color: #2c3e50;
   font-size: 20px;
+  box-shadow: none;
+  outline: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: #f0f0f0;
+  opacity: 0.7;
+  font-size: 2rem;
+  outline: none;
+}
+
+button:hover {
+    background: #41B883;
+  transition: all 0.2s ease-in;
+  color: #fff;
 }
 
 #calculator {
@@ -22,13 +45,8 @@ body {
   width: 100%;
 }
 
-.home {
-  height: 100%;
-  width: 100%;
-}
-
 .sidebar {
-  width: 12%;
+  width: 15%;
   height: 100%;
   background: #3a4447;
 }
@@ -39,15 +57,142 @@ body {
   margin: 0;
 }
 
-.sidebar ul li {
+.sidebar ul li a {
   color: #fff;
-  padding: 15px 20px;
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  justify-content: flex-start;
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.6;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.sidebar ul li a.active {
+  opacity: 1;
+  background: #41B883;
+  transition: all 0.2s ease-in;
+}
+
+.sidebar li a .tab-icon {
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
+}
+
+.sidebar .tab-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.sidebar li a.active img {
+  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+  transition: all 0.3s ease-in;
 }
 
 .content {
-  width: 88%;
-  height: 100%;
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.history {
+  width: 20%;
+  height: auto;
+}
+
+.display {
+  margin-bottom: 2.5rem;
+}
+
+.io-display {
+  height: 250px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.5rem;
+  font-size: 4rem;
+}
+
+.result {
+  height: 50%;
+  width: 100%;
+  background: rgba(0,0,0,0.05);
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.result span.mode {
+  position: absolute;
+  left: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  top: 10px;
+}
+
+.operation {
+  height: 50%;
+  width: 100%;
+  display: flex;
+}
+
+.operation input {
+  width: 100%;
+  outline: none;
+  font-size: 5rem;
+  text-align: right;
+  padding-right: 10px;
+  border: none;
+}
+
+.standard {
+  display: flex;
+  justify-content: space-between;
+}
+
+.standard button {
+  height: 6rem;
+  width: 6.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.standard .scientific {
+  width: 50%;
+}
+
+.standard .scientific button {
+  background: #c6ebdb;
+}
+
+.standard .scientific button:hover {
+  background: #41B883;
+}
+
+.standard .regular {
+  width: 50%;
+}
+
+.standard ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.standard ul li {
+  margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
 }

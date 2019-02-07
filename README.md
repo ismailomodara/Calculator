@@ -1,5 +1,5 @@
 # Calculator
-<<<<<<< HEAD
+#####A Web based calculator application.
 
 ## Project setup
 ```
