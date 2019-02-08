@@ -9,7 +9,7 @@
           :to="item.path"
           :class="{active : activeNav === item.id}">
           <div class="tab-icon">
-            <img :src="`${item.title.toLowerCase()}.svg`" :alt="item.title">
+            <img :src="`/icons/${item.title.toLowerCase()}.svg`" :alt="item.title">
           </div>
           <span>{{ item.title }}</span>
         </router-link>

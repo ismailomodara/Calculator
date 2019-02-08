@@ -4,7 +4,6 @@
       <sidebar/>
     </div>
     <div class="content">
-      <display/>
       <transition name="fade">
         <router-view></router-view>
       </transition>
@@ -15,13 +14,11 @@
 
 <script>
 import Sidebar from './components/sidebar';
-import Display from './components/display';
 
 export default {
   name: 'calculator',
   components: {
     Sidebar,
-    Display
   }
 }
 </script>
