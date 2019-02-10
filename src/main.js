@@ -10,6 +10,7 @@ import Mass from './components/calculators/mass.vue';
 import Temperature from './components/calculators/temperature.vue';
 import Currency from './components/calculators/currency.vue';
 import '@/assets/css/style.css'
+import '@/assets/css/media.css'
 
 Vue.use(VueRouter);
 Vue.config.productionTip = false

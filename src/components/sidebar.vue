@@ -8,9 +8,7 @@
         <router-link
           :to="item.path"
           :class="{active : activeNav === item.id}">
-          <div class="tab-icon">
-            <img :src="`/icons/${item.title.toLowerCase()}.svg`" :alt="item.title">
-          </div>
+          <img :src="`/icons/${item.title.toLowerCase()}.svg`" :alt="item.title">
           <span>{{ item.title }}</span>
         </router-link>
       </li>
