@@ -68,16 +68,17 @@ export default {
         {
           id: 4,
           value: 'x<sup>y</sup>',
-          function: 'xToYPower'
+          function: 'nthPower'
         },
         {
           id: 5,
-          value: '10<sup>x</sup>',
-          function: 'decimalPower'
+          value: 'AC',
+          function: 'reset'
         },
         {
           id: 6,
-          value: 'e<sup>x</sup>'
+          value: '10<sup>x</sup>',
+          function: 'decimalPower'
         },
         {
           id: 7,
@@ -96,90 +97,110 @@ export default {
         },
         {
           id: 10,
-          value: '<sup>y</sup>√x'
+          value: '<sup>y</sup>√x',
+          function: 'nthRoot'
         },
         {
           id: 11,
-          value: 'x<sup>y</sup>'
+          value: 'x!',
+          function: 'factorial'
         },
         {
           id: 12,
-          value: 'x!'
+          value: 'e<sup>x</sup>',
+          function: 'exponentialToNthPower'
         },
         {
           id: 13,
-          value: 'ln'
+          value: 'ln',
+          function: 'logE'
         },
         {
           id: 14,
-          value: 'log<sub>10</sub>'
+          value: 'log<sub>10</sub>',
+          function: 'log10'
         },
         {
           id: 15,
-          value: 'e'
+          value: 'e',
+          function: 'E'
         },
         {
           id: 16,
-          value: '('
+          value: '(',
+          function: 'braces'
         },
         {
           id: 17,
-          value: ')'
+          value: ')',
+          function: 'braces'
         },
         {
           id: 18,
-          value: 'sin'
+          value: 'sin',
+          function: 'sine'
         },
         {
           id: 19,
-          value: 'cos'
+          value: 'cos',
+          function: 'cosine'
         },
         {
           id: 20,
-          value: 'tan'
+          value: 'tan',
+          function: 'tangent'
         },
         {
           id: 21,
-          value: 'sinh'
+          value: 'sinh',
+          function: 'sineHyp'
         },
         {
           id: 22,
-          value: 'cosh'
+          value: 'cosh',
+          function: 'cosineHyp'
         },
         {
           id: 23,
-          value: 'tanh'
+          value: 'tanh',
+          function: 'tangentHyp'
         },
         {
           id: 24,
-          value: 'sin<sup>-1</sup>'
+          value: 'sin<sup>-1</sup>',
+          function: 'arcSine'
         },
         {
           id: 25,
-          value: 'cos<sup>-1</sup>'
+          value: 'cos<sup>-1</sup>',
+          function: 'arcCosine'
         },
         {
           id: 26,
-          value: 'tan<sup>-1</sup>'
+          value: 'tan<sup>-1</sup>',
+          function: 'arcTangent'
         },
         {
           id: 27,
-          value: 'sinh<sup>-1</sup>'
+          value: 'sinh<sup>-1</sup>',
+          function: 'arcSineHype'
         },
         {
           id: 28,
-          value: 'cosh<sup>-1</sup>'
+          value: 'cosh<sup>-1</sup>',
+          function: 'arcCosineHyp'
         },
         {
           id: 29,
-          value: 'tanh<sup>-1</sup>'
+          value: 'tanh<sup>-1</sup>',
+          function: 'arcTangentHyp'
         },
       ],
       regular: [
         {
           id: 19,
-          value: 'C',
-          function: 'reset'
+          value: 'Del',
+          function: 'delete'
         },
         {
           id: 18,
@@ -282,9 +303,26 @@ export default {
         e.preventDefault();
       }
     },
+
+    calcDeg() {
+      if (this.calcMode === 'deg') {
+         return (parseFloat(this.currentValue) * Math.PI/180);
+      }
+      return parseFloat(this.currentValue);
+    },
+
+    inverseTrig(value) {
+      if (this.calcMode === 'deg') {
+        return (value * 180/Math.PI);
+      }
+      return value;
+    },
+
     methodTo(buttonFunction,buttonValue) {
       this.functionType = buttonFunction;
       switch (this.functionType) {
+        case 'delete':
+          return this.delete();
         case 'reset':
           return this.reset();
         case 'sign':
@@ -311,8 +349,8 @@ export default {
           return this.squareValue();
         case 'cube':
           return this.cubeValue();
-        case 'xToYPower':
-          return this.xToYPower();
+        case 'nthPower':
+          return this.nthPower();
         case 'decimalPower':
           return this.decimalPower();
         case 'inverse':
@@ -321,6 +359,44 @@ export default {
           return this.squareRoot();
         case 'cube-root':
           return this.cubeRoot();
+        case 'nthRoot':
+          return this.nthRoot();
+        case 'factorial':
+          return this.calcFactorial();
+        case 'exponentialToNthPower':
+          return this.exponentialNthPower();
+        case 'logE':
+          return this.logE();
+        case 'log10':
+          return this.log10();
+        case 'E':
+          return this.E();
+        case 'braces':
+          return this.braces(buttonValue);
+        case 'sine':
+          return this.sine();
+        case 'cosine':
+          return this.cosine();
+        case 'tangent':
+          return this.tangent();
+        case 'sineHyp':
+          return this.sineHyp();
+        case 'cosineHyp':
+          return this.cosineHyp();
+        case 'tangentHyp':
+          return this.tangentHyp();
+        case 'arcSine':
+          return this.arcSine();
+        case 'arcCosine':
+          return this.arcCosine();
+        case 'arcTangent':
+          return this.arcTangent();
+        case 'arcSineHyp':
+          return this.arcSineHyp();
+        case 'arcCosineHyp':
+          return this.arcCosineHyp();
+        case 'arcTangentHyp':
+          return this.arcTangentHyp();
         default:
           return this.currentValue = '';
       }
@@ -329,6 +405,11 @@ export default {
     reset() {
       this.currentValue = '';
       this.displayInput = '';
+    },
+
+    delete() {
+      this.currentValue = this.currentValue.slice(0,-1);
+      this.displayInput = this.currentValue;
     },
 
     sign() {
@@ -418,7 +499,7 @@ export default {
       this.calcResult = true;
     },
 
-    xToYPower() {
+    nthPower() {
       this.displayInput = `${this.displayInput}^`;
       this.operator = (a,b) => Math.pow(a,b);
       this.setPrevious();
@@ -441,6 +522,107 @@ export default {
 
     cubeRoot() {
       this.currentValue = `${Math.cbrt(parseFloat(this.currentValue))}`;
+      this.calcResult = true;
+    },
+
+    nthRoot() {
+      this.displayInput = `${this.displayInput}^1/`;
+      this.operator = (a,b) => parseFloat(Math.pow(a, 1/b)).toFixed(3);
+      this.setPrevious();
+    },
+
+    calcFactorial() {
+      let factorial = 1;
+      for (let i = 1; i <= parseFloat(this.currentValue); i += 1) {
+        factorial = factorial * i;
+      }
+      this.currentValue = factorial;
+      this.calcResult = true;
+    },
+
+    exponentialNthPower() {
+      const e = 2.71828;
+      this.currentValue = `${Math.pow(e, parseFloat(this.currentValue))}`;
+      this.calcResult = true;
+    },
+
+    logE() {
+      this.currentValue = `${Math.log(parseFloat(this.currentValue))}`;
+      this.calcResult = true;
+    },
+
+    log10() {
+      this.currentValue = `${Math.log10(parseFloat(this.currentValue))}`;
+      this.calcResult = true;
+    },
+
+    E() {
+      this.currentValue = 2.71828;
+      this.displayInput = 2.71828;
+      this.calcResult = true;
+    },
+
+    braces(value) {
+      this.displayInput = `${this.displayInput}${value}`;
+    },
+
+    sine() {
+      this.currentValue = Math.sin(this.calcDeg()).toFixed(4);
+      this.calcResult = true;
+    },
+
+    cosine() {
+      this.currentValue = Math.cos(this.calcDeg()).toFixed(4);
+      this.calcResult = true;
+    },
+
+    tangent() {
+      this.currentValue = Math.tan(this.calcDeg()).toFixed(4);
+      this.calcResult = true;
+    },
+
+    sineHyp() {
+      this.currentValue = Math.sinh(this.calcDeg()).toFixed(4);
+      this.calcResult = true;
+    },
+
+    cosineHyp() {
+      this.currentValue = Math.cosh(this.calcDeg()).toFixed(4);
+      this.calcResult = true;
+    },
+
+    tangentHyp() {
+      this.currentValue = Math.tanh(this.calcDeg()).toFixed(4);
+      this.calcResult = true;
+    },
+
+    arcSine() {
+      this.currentValue = this.inverseTrig(Math.asin(parseFloat(this.currentValue))).toFixed(4);
+      this.calcResult = true;
+    },
+
+    arcCosine() {
+      this.currentValue = this.inverseTrig(Math.acos(parseFloat(this.currentValue))).toFixed(4);
+      this.calcResult = true;
+    },
+
+    arcTangent() {
+      this.currentValue = this.inverseTrig(Math.atan(parseFloat(this.currentValue))).toFixed(4);
+      this.calcResult = true;
+    },
+
+    arcSineHyp() {
+      this.currentValue = this.inverseTrig(Math.asinh(parseFloat(this.currentValue))).toFixed(4);
+      this.calcResult = true;
+    },
+
+    arcCosineHyp() {
+      this.currentValue = this.inverseTrig(Math.acosh(parseFloat(this.currentValue))).toFixed(4)
+      this.calcResult = true;
+    },
+
+    arcTangentHyp() {
+      this.currentValue = this.inverseTrig(Math.atanh(parseFloat(this.currentValue))).toFixed(4)
       this.calcResult = true;
     }
   }
