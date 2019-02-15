@@ -1,5 +1,5 @@
 # Calculator
-#####A Web based calculator application.
+##### A Web based calculator application.
 
 ## Project setup
 ```
@@ -13,7 +13,7 @@ npm run serve
 
 ### Compiles and minifies for production
 ```
-npm run build
+npm run build 
 ```
 
 ### Run your tests
