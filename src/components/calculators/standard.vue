@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="standard-calculator">
     <div class="display">
       <div class="io-display">
         <div class="result">

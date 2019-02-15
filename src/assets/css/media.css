@@ -1,60 +1,26 @@
-@media only screen and (min-width: 1681px) {
+
+@media only screen and (min-width: 999px) {
+  html, body {
+    font-size: 10px;
+  }
+}
+
+
+@media only screen and (min-width: 1124px) {
+  html, body {
+    font-size: 11px;
+  }
+}
+
+@media only screen and (min-width: 1309px) {
+  .standard-calculator {
+    max-width: 860px!important;
+  }
+}
+
+@media only screen and (max-width: 998px) {
   html, body {
     font-size: 16px;
-  }
-}
-
-@media only screen and (max-width: 1680px) {
-  html, body {
-    font-size: 15px;
-  }
-}
-
-@media only screen and (max-width: 1507px) {
-  html, body {
-    font-size: 14px;
-  }
-  .standard .scientific {
-    width: 55%;
-  }
-  .standard .regular {
-    width: 45%;
-  }
-}
-
-@media only screen and (max-width: 1366px) {
-  html, body {
-    font-size: 13px !important;
-  }
-  .standard .scientific {
-    width: 60%;
-  }
-  .standard .regular {
-    width: 40%;
-  }
-}
-
-@media only screen and (max-width: 1281px) {
-  .standard .scientific {
-    width: 55%;
-  }
-  .standard .regular {
-    width: 45%;
-  }
-}
-
-@media only screen and (max-width: 1281px) {
-  .standard .scientific {
-    width: 45%;
-  }
-  .standard .regular {
-    width: 55%;
-  }
-}
-
-@media only screen and (max-width: 991px) {
-  html, body {
-    font-size: 16px!important;
   }
   .sidebar li a span {
     display: none;
@@ -83,11 +49,36 @@
   .standard .scientific {
     display: none;
   }
+  .standard .regular {
+    max-width: 500px;
+  }
+}
+
+@media only screen and (max-width: 571px) {
+  html, body {
+    font-size: 14px!important;
+  }
 }
 
 @media only screen and (max-width: 481px) {
+  html, body {
+    font-size: 12px!important;
+  }
   .sidebar li a img {
     height: 20px;
     width: 20px;
+  }
+  .standard .regular {
+    margin: auto;
+  }
+  .standard .regular {
+    max-width: 360px!important;
+  }
+}
+
+
+@media only screen and (max-width: 410px) {
+  html, body {
+    font-size: 10px!important;
   }
 }
