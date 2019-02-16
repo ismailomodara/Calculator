@@ -17,6 +17,16 @@
       </div>
       <div class="options"></div>
     </div>
+    <div class="standard-calculator-mode">
+      <div class="radioButton">
+        <input id="regular" type="radio" checked name="standard-calculator" value="0" @click="displayCalcType('regular')">
+        <label for="regular">Basic</label>
+      </div>
+      <div class="radioButton">
+        <input id="advanced" type="radio" name="standard-calculator" value="1" @click="displayCalcType('advanced')">
+        <label for="advanced">Advanced</label>
+      </div>
+    </div>
     <div class="standard">
       <div class="scientific">
         <ul>
@@ -293,7 +303,7 @@ export default {
           function: 'equals'
         },
       ],
-      functionType: ''
+      standardMobile: 'regular',
     }
   },
   computed:  {},
@@ -301,6 +311,16 @@ export default {
     onlyNumbers(e) {
       if (e.shiftKey || e.which >= 58 || e.key === 32 || e.key === 13) {
         e.preventDefault();
+      }
+    },
+
+    displayCalcType(value) {
+      if (value === 'advanced') {
+        document.querySelector('.regular').style.display = 'none';
+        document.querySelector('.scientific').style.display = 'block';
+      } else {
+        document.querySelector('.regular').style.display = '';
+        document.querySelector('.scientific').style.display = 'none';
       }
     },
 
@@ -319,8 +339,7 @@ export default {
     },
 
     methodTo(buttonFunction,buttonValue) {
-      this.functionType = buttonFunction;
-      switch (this.functionType) {
+      switch (buttonFunction) {
         case 'delete':
           return this.delete();
         case 'reset':
@@ -409,7 +428,7 @@ export default {
 
     delete() {
       this.currentValue = this.currentValue.slice(0,-1);
-      this.displayInput = this.currentValue;
+      this.displayInput = this.displayInput.slice(0,-1);
     },
 
     sign() {
@@ -428,30 +447,31 @@ export default {
         this.currentValue = `${this.operator(parseFloat(this.previousValue), parseFloat(this.currentValue))}`;
       }
       this.previousValue = this.currentValue;
+      this.calcResult = false;
     },
 
     divide(value) {
+      this.setPrevious();
       this.displayInput = `${this.displayInput}${value}`;
       this.operator = (a,b) => a / b;
-      this.setPrevious();
     },
 
     multiply(value) {
+      this.setPrevious();
       this.displayInput = `${this.displayInput}${value}`;
       this.operator = (a,b) => a * b;
-      this.setPrevious();
     },
 
     add(value) {
+      this.setPrevious();
       this.displayInput = `${this.displayInput}${value}`;
       this.operator = (a,b) => a + b;
-      this.setPrevious();
     },
 
     subtract(value) {
+      this.setPrevious();
       this.displayInput = `${this.displayInput}${value}`;
       this.operator = (a,b) => a - b;
-      this.setPrevious();
     },
 
     equals() {
@@ -468,6 +488,7 @@ export default {
       }
       this.displayInput = `${this.displayInput}${value}`;
       this.currentValue = `${this.currentValue}${value}`;
+      this.calcResult = false;
     },
 
     decimal() {
